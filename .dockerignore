@@ -1,0 +1,7 @@
+.git
+.venv
+node_modules
+apps/viewer/dist
+.pytest_cache
+.coverage
+htmlcov
