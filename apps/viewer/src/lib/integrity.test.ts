@@ -3,7 +3,22 @@ import { sampleTrace } from '../data/sampleTrace'
 import { evaluateIntegrity } from './integrity'
 
 describe('integrity evaluator', () => {
-  it('requires fingerprints', () => {
-    expect(evaluateIntegrity(sampleTrace).map((finding) => finding.code)).toContain('missing_fingerprint')
+  it('accepts the fingerprinted synthetic trace', () => {
+    expect(evaluateIntegrity(sampleTrace)).toEqual([])
+  })
+
+  it('flags duplicate identifiers and missing fingerprints', () => {
+    const trace = {
+      ...sampleTrace,
+      events: [
+        sampleTrace.events[0],
+        { ...sampleTrace.events[0], fingerprint: undefined },
+      ],
+    }
+
+    expect(evaluateIntegrity(trace).map((finding) => finding.code)).toEqual([
+      'duplicate_event_id',
+      'missing_fingerprint',
+    ])
   })
 })

@@ -3,7 +3,7 @@ import { sampleTrace } from '../data/sampleTrace'
 import { evaluateTrace } from './policy'
 
 describe('policy evaluation', () => {
-  it('accepts the demo trace', () => {
+  it('accepts the synthetic trace', () => {
     expect(evaluateTrace(sampleTrace)).toEqual([])
   })
 

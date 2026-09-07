@@ -3,8 +3,13 @@ import { alternateTrace, sampleTrace } from '../data/sampleTrace'
 import { eventCounts, firstDivergence, timelineWindow, toolEvents } from './traceSelectors'
 
 describe('trace selectors', () => {
+  it('uses a substantial synthetic trace', () => {
+    expect(sampleTrace.events).toHaveLength(100)
+  })
+
   it('counts event kinds', () => {
-    expect(eventCounts(sampleTrace).tool_call).toBe(1)
+    expect(eventCounts(sampleTrace).tool_call).toBe(16)
+    expect(eventCounts(sampleTrace).artifact).toBe(15)
   })
 
   it('finds tool events', () => {
@@ -12,7 +17,7 @@ describe('trace selectors', () => {
   })
 
   it('locates first divergence', () => {
-    expect(firstDivergence(sampleTrace, alternateTrace)).toBe(3)
+    expect(firstDivergence(sampleTrace, alternateTrace)).toBe(23)
   })
 
   it('returns the visible timeline window', () => {

@@ -4,11 +4,13 @@ import { eventKinds, eventMatchesQuery, filterTraceEvents } from './search'
 
 describe('search helpers', () => {
   it('matches event payload text', () => {
-    expect(eventMatchesQuery(sampleTrace.events[1], 'payment webhook')).toBe(true)
+    const incidentReport = sampleTrace.events.find((event) => event.summary.includes('payment webhook outage'))
+    expect(incidentReport).toBeDefined()
+    expect(eventMatchesQuery(incidentReport!, 'payment webhook')).toBe(true)
   })
 
   it('filters by kind', () => {
-    expect(filterTraceEvents(sampleTrace, '', 'tool_call')).toHaveLength(1)
+    expect(filterTraceEvents(sampleTrace, '', 'tool_call')).toHaveLength(16)
   })
 
   it('lists event kinds', () => {
