@@ -1,6 +1,6 @@
 # Agent Black Box
 
-Agent Black Box is a portable run recorder for AI agent systems. It captures observations, decisions, permission checks, tool calls, environment changes, artifacts, and errors in a versioned JSON trace that can be inspected, redacted, replayed, compared, and evaluated by policy checks.
+Agent Black Box is a portable run recorder for AI agent systems. It captures observations, decisions, permission checks, tool calls, environment changes, artifacts, and errors in a versioned JSON trace that can be inspected, redacted, replayed, minimized, indexed, compared, and evaluated by policy checks.
 
 The repository includes a Python SDK and CLI, a React trace viewer, JSON schemas, fixtures, examples, tests, Docker support, and CI.
 
@@ -16,7 +16,13 @@ Modern agents can fail because of stale observations, missing permissions, unsaf
 - Fork a trace at a known event for controlled experiments
 - Compare two runs and locate the first behavioral divergence
 - Evaluate traces for lifecycle, permission, slow tool, secret leak, and error-budget findings
-- Export trace summaries as Markdown and policy findings as JUnit XML
+- Load stricter policy packs from JSON
+- Verify event fingerprints and trace-level hash-chain manifests
+- Stream traces as JSONL and restore them to trace JSON
+- Minimize traces to specific events, tags, or event kinds
+- Index and search trace summaries, tags, actors, and payloads
+- Render causal edges and Graphviz DOT output
+- Export trace summaries as Markdown, transcripts, and JUnit XML
 - Inspect traces in a local React dashboard
 
 ## Repository layout
@@ -48,6 +54,7 @@ pnpm install
 ```bash
 python -m pytest
 pnpm --dir apps/viewer exec vitest run
+pnpm --dir apps/viewer lint
 pnpm --dir apps/viewer build
 ```
 
@@ -56,10 +63,17 @@ pnpm --dir apps/viewer build
 ```bash
 abb inspect fixtures/traces/incident_triage.json
 abb validate fixtures/traces/incident_triage.json
+abb metrics fixtures/traces/incident_triage.json
+abb manifest fixtures/traces/incident_triage.json --output out/manifest.json
+abb verify-manifest fixtures/traces/incident_triage.json out/manifest.json
 abb replay fixtures/traces/incident_triage.json
-abb policy fixtures/traces/incident_triage.json
-abb compare fixtures/traces/incident_triage.json fixtures/traces/incident_triage_alt.json
-abb export fixtures/traces/incident_triage.json out/trace.md
+abb policy fixtures/traces/incident_triage.json --pack examples/policies/strict-public-demo.json
+abb events fixtures/traces/incident_triage.json --query webhook --kind observation
+abb minimize fixtures/traces/incident_triage.json out/minimized.json --kind tool_call --window 1
+abb write-jsonl fixtures/traces/incident_triage.json out/trace.jsonl
+abb read-jsonl out/trace.jsonl out/restored.json
+abb dot fixtures/traces/incident_triage.json --output out/trace.dot
+abb transcript fixtures/traces/incident_triage.json --output out/transcript.txt
 ```
 
 ## Run the viewer
