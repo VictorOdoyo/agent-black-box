@@ -67,11 +67,18 @@ class AgentRecorder:
             )
         )
 
-    def observation(self, summary: str, payload: Mapping[str, Any] | None = None) -> TraceEvent:
-        return self.record(EventKind.OBSERVATION, summary, payload)
+    def observation(self, summary: str, payload: Mapping[str, Any] | None = None, *, tags: list[str] | None = None) -> TraceEvent:
+        return self.record(EventKind.OBSERVATION, summary, payload, tags=tags)
 
-    def decision(self, summary: str, rationale: str, alternatives: list[str] | None = None) -> TraceEvent:
-        return self.record(EventKind.DECISION, summary, {"rationale": rationale, "alternatives": alternatives or []})
+    def decision(
+        self,
+        summary: str,
+        rationale: str,
+        alternatives: list[str] | None = None,
+        *,
+        tags: list[str] | None = None,
+    ) -> TraceEvent:
+        return self.record(EventKind.DECISION, summary, {"rationale": rationale, "alternatives": alternatives or []}, tags=tags)
 
     def permission(self, capability: str, allowed: bool, reason: str) -> TraceEvent:
         return self.record(EventKind.PERMISSION, f"Permission {'allowed' if allowed else 'denied'}: {capability}", {
