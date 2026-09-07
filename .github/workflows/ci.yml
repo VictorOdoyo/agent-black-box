@@ -29,5 +29,5 @@ jobs:
           node-version: 20
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm --dir apps/viewer test -- --run
+      - run: pnpm --dir apps/viewer exec vitest run
       - run: pnpm --dir apps/viewer build

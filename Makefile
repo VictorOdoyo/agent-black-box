@@ -10,7 +10,7 @@ test-python:
 	python -m pytest
 
 test-web:
-	pnpm --dir apps/viewer test -- --run
+	pnpm --dir apps/viewer exec vitest run
 
 build:
 	pnpm --dir apps/viewer build

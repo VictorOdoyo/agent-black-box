@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "test": "python -m pytest && pnpm --dir apps/viewer test -- --run",
+    "test": "python -m pytest && pnpm --dir apps/viewer exec vitest run",
     "test:python": "python -m pytest",
-    "test:web": "pnpm --dir apps/viewer test -- --run",
+    "test:web": "pnpm --dir apps/viewer exec vitest run",
     "build": "pnpm --dir apps/viewer build",
     "dev": "pnpm --dir apps/viewer dev",
     "lint": "pnpm --dir apps/viewer lint"
