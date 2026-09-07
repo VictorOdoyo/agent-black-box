@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-black-box.dev/schemas/redaction_policy.schema.json",
+  "title": "Agent Black Box Redaction Policy",
+  "type": "object",
+  "properties": {
+    "sensitive_keys": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regex_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "pattern",
+          "replacement"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "replacement": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
