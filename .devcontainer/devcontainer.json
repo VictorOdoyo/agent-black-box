@@ -1,0 +1,10 @@
+{
+  "name": "agent-black-box",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
+    }
+  },
+  "postCreateCommand": "python -m pip install -e '.[dev]' && corepack enable && corepack prepare pnpm@9.15.9 --activate && pnpm install"
+}
