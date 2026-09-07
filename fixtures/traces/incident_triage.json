@@ -21,8 +21,7 @@
         }
       },
       "parent_id": null,
-      "tags": [],
-      "fingerprint": "demo"
+      "tags": []
     },
     {
       "id": "evt_002",
@@ -37,8 +36,7 @@
       "parent_id": null,
       "tags": [
         "input"
-      ],
-      "fingerprint": "demo"
+      ]
     },
     {
       "id": "evt_003",
@@ -56,8 +54,7 @@
       "parent_id": null,
       "tags": [
         "triage"
-      ],
-      "fingerprint": "demo"
+      ]
     },
     {
       "id": "evt_004",
@@ -71,8 +68,7 @@
         "reason": "Read-only diagnostic search."
       },
       "parent_id": null,
-      "tags": [],
-      "fingerprint": "demo"
+      "tags": []
     },
     {
       "id": "evt_005",
@@ -98,8 +94,7 @@
       "parent_id": null,
       "tags": [
         "tool"
-      ],
-      "fingerprint": "demo"
+      ]
     },
     {
       "id": "evt_006",
@@ -116,8 +111,7 @@
       "parent_id": null,
       "tags": [
         "artifact"
-      ],
-      "fingerprint": "demo"
+      ]
     },
     {
       "id": "evt_007",
@@ -129,8 +123,7 @@
         "status": "completed"
       },
       "parent_id": null,
-      "tags": [],
-      "fingerprint": "demo"
+      "tags": []
     }
   ]
 }
