@@ -131,7 +131,10 @@ select {
 .event-metadata dt,
 .tool-card small,
 .comparison-grid small,
-.redaction-grid small {
+.redaction-grid small,
+.redaction-summary small,
+.redaction-document-grid small,
+.redaction-table-row small {
   color: #53667a;
 }
 
@@ -290,9 +293,86 @@ pre {
 .tool-stack,
 .finding-list,
 .comparison-grid,
-.redaction-grid {
+.redaction-grid,
+.redaction-summary,
+.redaction-document-grid,
+.redaction-table {
   display: grid;
   gap: 12px;
+}
+
+.redaction-summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
+.redaction-summary article,
+.redaction-document-grid article,
+.redaction-table {
+  border: 1px solid #dbe4eb;
+  border-radius: 8px;
+}
+
+.redaction-summary article {
+  display: grid;
+  gap: 8px;
+  padding: 14px;
+}
+
+.redaction-summary strong,
+.redaction-table-row strong {
+  overflow-wrap: anywhere;
+}
+
+.redaction-document-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 14px;
+}
+
+.redaction-document-grid article {
+  background: #f8fbfc;
+  display: grid;
+  gap: 8px;
+  padding: 16px;
+}
+
+.redaction-document-grid p {
+  color: #162337;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.redaction-table {
+  overflow: hidden;
+}
+
+.redaction-table-header,
+.redaction-table-row {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(180px, 1.2fr) minmax(150px, 1fr) minmax(180px, 1.1fr) minmax(160px, 1fr);
+  padding: 12px 14px;
+}
+
+.redaction-table-header {
+  background: #f3f7fa;
+  color: #33465a;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.redaction-table-row {
+  align-items: start;
+  border-top: 1px solid #dbe4eb;
+}
+
+.redaction-table-row small {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+  overflow-wrap: anywhere;
 }
 
 .finding-list {
@@ -343,6 +423,10 @@ code {
   .summary-grid,
   .main-grid,
   .payload-row,
+  .redaction-summary,
+  .redaction-document-grid,
+  .redaction-table-header,
+  .redaction-table-row,
   .event-metadata {
     grid-template-columns: 1fr;
   }
