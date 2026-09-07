@@ -1,0 +1,12 @@
+{
+  "name": "strict-public-demo",
+  "max_tool_duration_ms": 5000,
+  "max_error_events": 0,
+  "denied_tools": [
+    "delete_file",
+    "send_email"
+  ],
+  "required_tags": [
+    "triage"
+  ]
+}
