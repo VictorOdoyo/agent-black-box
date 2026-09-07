@@ -1,0 +1,118 @@
+{
+  "schema_version": "abb.trace.v1",
+  "trace_id": "trc_demo_dispatch_alt",
+  "run_id": "run_demo_incident_triage_alt",
+  "app": "incident-triage-agent",
+  "started_at": "2026-08-18T11:15:00Z",
+  "metadata": {
+    "model": "example-agent",
+    "environment": "local-demo"
+  },
+  "events": [
+    {
+      "id": "evt_001",
+      "kind": "run_started",
+      "timestamp": "2026-08-18T11:15:00Z",
+      "actor": "agent",
+      "summary": "Agent run started",
+      "payload": {
+        "metadata": {
+          "model": "example-agent"
+        }
+      },
+      "parent_id": null,
+      "tags": [],
+      "fingerprint": "demo"
+    },
+    {
+      "id": "evt_002",
+      "kind": "observation",
+      "timestamp": "2026-08-18T11:15:03Z",
+      "actor": "agent",
+      "summary": "User reported a payment webhook outage",
+      "payload": {
+        "channel": "ops",
+        "severity": "high"
+      },
+      "parent_id": null,
+      "tags": [
+        "input"
+      ],
+      "fingerprint": "demo"
+    },
+    {
+      "id": "evt_003",
+      "kind": "decision",
+      "timestamp": "2026-08-18T11:15:08Z",
+      "actor": "agent",
+      "summary": "Classify incident as integration failure",
+      "payload": {
+        "rationale": "Recent deploy touched webhook retry logic.",
+        "alternatives": [
+          "provider outage",
+          "database latency"
+        ]
+      },
+      "parent_id": null,
+      "tags": [
+        "triage"
+      ],
+      "fingerprint": "demo"
+    },
+    {
+      "id": "evt_alt_004",
+      "kind": "tool_call",
+      "timestamp": "2026-08-18T11:15:10Z",
+      "actor": "agent",
+      "summary": "Tool call: query_metrics",
+      "payload": {
+        "name": "query_metrics",
+        "request": {
+          "metric": "webhook.failures"
+        },
+        "response": {
+          "spike": true
+        },
+        "status": "ok",
+        "duration_ms": 89,
+        "requires_permission": false
+      },
+      "parent_id": null,
+      "tags": [
+        "tool"
+      ],
+      "fingerprint": "demo"
+    },
+    {
+      "id": "evt_006",
+      "kind": "artifact",
+      "timestamp": "2026-08-18T11:15:22Z",
+      "actor": "agent",
+      "summary": "Artifact captured: incident-summary",
+      "payload": {
+        "path": "out/incident-summary.md",
+        "label": "incident-summary",
+        "exists": true,
+        "bytes": 820
+      },
+      "parent_id": null,
+      "tags": [
+        "artifact"
+      ],
+      "fingerprint": "demo"
+    },
+    {
+      "id": "evt_007",
+      "kind": "run_finished",
+      "timestamp": "2026-08-18T11:15:29Z",
+      "actor": "agent",
+      "summary": "Agent run finished",
+      "payload": {
+        "status": "completed"
+      },
+      "parent_id": null,
+      "tags": [],
+      "fingerprint": "demo"
+    }
+  ]
+}
