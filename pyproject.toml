@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-black-box"
+version = "0.1.0"
+description = "Portable traces, replay, redaction, and diagnostics for AI agent runs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Victor Odoyo" }]
+keywords = ["agents", "observability", "replay", "redaction", "testing"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-cov>=5.0",
+]
+
+[project.scripts]
+abb = "agent_black_box.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["packages/python/agent_black_box"]
+
+[tool.pytest.ini_options]
+pythonpath = ["packages/python"]
+testpaths = ["tests"]
+addopts = "-q --cov=agent_black_box --cov-report=term-missing"
+
+[tool.coverage.run]
+branch = true
+source = ["packages/python/agent_black_box"]
