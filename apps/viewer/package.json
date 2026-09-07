@@ -1,0 +1,30 @@
+{
+  "name": "@agent-black-box/viewer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc -b && vite build",
+    "test": "vitest",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "6.0.5",
+    "vite": "8.2.1",
+    "typescript": "6.0.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "6.9.1",
+    "@testing-library/react": "16.3.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
+    "eslint": "10.0.1",
+    "@eslint/js": "10.0.1",
+    "globals": "17.11.0",
+    "typescript-eslint": "8.67.0",
+    "vitest": "3.2.4",
+    "jsdom": "27.3.0"
+  }
+}
