@@ -37,14 +37,14 @@ export default function App() {
         <div className="brand-mark">A</div>
         <div>
           <strong>Agent Black Box</strong>
-          <span>Trace laboratory</span>
+          <span>Run recorder</span>
         </div>
       </aside>
       <section className="content">
         <header className="page-header">
           <div>
-            <p>AGENT OBSERVABILITY</p>
-            <h1>Portable agent run recorder</h1>
+            <p>AGENT RUNS</p>
+            <h1>AI Agent Black Box Recorder</h1>
           </div>
           <nav aria-label="Views">
             {views.map((item) => (

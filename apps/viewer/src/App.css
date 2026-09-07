@@ -259,6 +259,34 @@ pre {
   padding: 16px;
 }
 
+.payload-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.payload-row {
+  align-items: start;
+  background: #f8fbfc;
+  border: 1px solid #dbe4eb;
+  border-radius: 8px;
+  display: grid;
+  gap: 6px;
+  grid-template-columns: minmax(160px, 0.35fr) minmax(0, 1fr);
+  padding: 12px 14px;
+}
+
+.payload-row span {
+  color: #52667a;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.payload-row strong {
+  color: #132033;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
 .tool-stack,
 .finding-list,
 .comparison-grid,
@@ -314,6 +342,7 @@ code {
 
   .summary-grid,
   .main-grid,
+  .payload-row,
   .event-metadata {
     grid-template-columns: 1fr;
   }
