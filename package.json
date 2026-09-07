@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "python -m pytest && pnpm --dir apps/viewer test -- --run",
+    "test:python": "python -m pytest",
+    "test:web": "pnpm --dir apps/viewer test -- --run",
+    "build": "pnpm --dir apps/viewer build",
+    "dev": "pnpm --dir apps/viewer dev",
+    "lint": "pnpm --dir apps/viewer lint"
+  },
+  "devDependencies": {}
+}
